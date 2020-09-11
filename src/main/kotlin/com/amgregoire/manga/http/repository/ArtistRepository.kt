@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface ArtistRepository:JpaRepository<Artist, UUID>
+interface ArtistRepository : JpaRepository<Artist, UUID>
+{
+    fun findOneByName(name: String): Artist?
+
+}

@@ -12,11 +12,11 @@ class AuthorController(
 {
     companion object
     {
-        const val BASE_URL = "/author"
+        const val BASE_URL = "/name"
     }
 
     /***
-     * Add author
+     * Add name
      */
 
 }

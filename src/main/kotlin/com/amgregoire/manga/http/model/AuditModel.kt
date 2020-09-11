@@ -26,4 +26,13 @@ abstract class AuditModel: Serializable {
     @Column(name = "updated_at", nullable = false)
     @LastModifiedDate
     var updatedAt = Date()
+
+    override fun equals(other: Any?): Boolean
+    {
+        if(other == null) return false
+        return (other is AuditModel) && other.id == id
+    }
+
+    override fun hashCode() = id.hashCode()
+
 }

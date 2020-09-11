@@ -1,7 +1,7 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.3.11'
-		springBootVersion = '2.1.2.RELEASE'
+		kotlinVersion = '1.3.31'
+		springBootVersion = '2.2.5.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -19,13 +19,20 @@ apply plugin: 'kotlin-spring'
 apply plugin: 'kotlin-jpa'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
+mainClassName = 'com.amgregoire.manga.FableApplication'
 
 group = 'com.amgregoire'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.5'
 sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+}
+
+
+springBoot {
+	buildInfo()
 }
 
 dependencies {
@@ -36,6 +43,8 @@ dependencies {
 	implementation "org.jetbrains.kotlin:kotlin-reflect"
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'org.springframework.security:spring-security-crypto:3.1.0.RELEASE'
 }
 
 compileKotlin {

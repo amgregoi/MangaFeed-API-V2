@@ -7,3 +7,6 @@ import java.util.*
 
 @Repository
 interface AuthorRepository:JpaRepository<Author, UUID>
+{
+    fun findOneByName(name: String): Author?
+}

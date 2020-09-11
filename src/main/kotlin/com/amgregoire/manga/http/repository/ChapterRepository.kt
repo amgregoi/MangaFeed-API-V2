@@ -7,3 +7,6 @@ import java.util.*
 
 @Repository
 interface ChapterRepository:JpaRepository<Chapter, UUID>
+{
+    fun findOneByLink(link: String): Chapter?
+}

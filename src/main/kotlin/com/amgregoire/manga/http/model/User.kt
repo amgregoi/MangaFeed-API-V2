@@ -1,5 +1,6 @@
 package com.amgregoire.manga.http.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
@@ -10,8 +11,8 @@ class User : AuditModel()
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = [
-                CascadeType.PERSIST,
-                CascadeType.MERGE])
+                CascadeType.PERSIST
+            ])
     @JoinTable(name = "user_library",
             joinColumns = [JoinColumn(name = "user_id")],
             inverseJoinColumns = [JoinColumn(name = "manga_id")])
@@ -20,8 +21,8 @@ class User : AuditModel()
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = [
-                CascadeType.PERSIST,
-                CascadeType.MERGE])
+                CascadeType.PERSIST
+            ])
     @JoinTable(name = "user_reading",
             joinColumns = [JoinColumn(name = "user_id")],
             inverseJoinColumns = [JoinColumn(name = "manga_id")])
@@ -30,8 +31,8 @@ class User : AuditModel()
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = [
-                CascadeType.PERSIST,
-                CascadeType.MERGE])
+                CascadeType.PERSIST
+            ])
     @JoinTable(name = "user_complete",
             joinColumns = [JoinColumn(name = "user_id")],
             inverseJoinColumns = [JoinColumn(name = "manga_id")])
@@ -40,8 +41,8 @@ class User : AuditModel()
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = [
-                CascadeType.PERSIST,
-                CascadeType.MERGE])
+                CascadeType.PERSIST
+            ])
     @JoinTable(name = "user_on_hold",
             joinColumns = [JoinColumn(name = "user_id")],
             inverseJoinColumns = [JoinColumn(name = "manga_id")])
@@ -50,20 +51,18 @@ class User : AuditModel()
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = [
-                CascadeType.PERSIST,
-                CascadeType.MERGE])
+                CascadeType.PERSIST
+            ])
     @JoinTable(name = "user_plan_to_read",
             joinColumns = [JoinColumn(name = "user_id")],
             inverseJoinColumns = [JoinColumn(name = "manga_id")])
     var planToRead: Set<Manga> = setOf()
 
-
     @NotBlank
-    var name: String = ""
-
-    @NotBlank
+    @Column(unique = true, length = 48)
     var email: String = ""
 
     @NotBlank
+    @JsonIgnore
     var password: String = ""
 }

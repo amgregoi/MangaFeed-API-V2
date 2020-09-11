@@ -12,11 +12,11 @@ class ArtistController(
 {
     companion object
     {
-        const val BASE_URL = "/artist"
+        const val BASE_URL = "/name"
     }
 
     /***
-     * Add artist
+     * Add name
      */
 
 }

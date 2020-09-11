@@ -7,3 +7,6 @@ import java.util.*
 
 @Repository
 interface SourceRepository:JpaRepository<Source, UUID>
+{
+
+}

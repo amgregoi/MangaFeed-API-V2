@@ -12,11 +12,11 @@ class GenreController(
 {
     companion object
     {
-        const val BASE_URL = "/genre"
+        const val BASE_URL = "/name"
     }
 
     /***
-     * Add genre
+     * Add name
      */
 
 }

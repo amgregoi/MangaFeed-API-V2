@@ -7,3 +7,6 @@ import java.util.*
 
 @Repository
 interface UserRepository:JpaRepository<User, UUID>
+{
+    fun findOneByEmail(email: String): User?
+}

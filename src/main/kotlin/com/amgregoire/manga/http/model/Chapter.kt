@@ -5,12 +5,12 @@ import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
 @Entity
-@Table(name = "chapters")
+@Table(name = "chapters", uniqueConstraints = [UniqueConstraint(columnNames = ["link"])])
 class Chapter : AuditModel()
 {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "site_id", nullable = false, columnDefinition = "uuid")
+    @JoinColumn(name = "manga_id", nullable = false, columnDefinition = "uuid")
     @JsonIgnore
     lateinit var manga: Manga
 

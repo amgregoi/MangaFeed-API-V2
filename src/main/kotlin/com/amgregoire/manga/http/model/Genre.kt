@@ -1,13 +1,18 @@
 package com.amgregoire.manga.http.model
 
-import javax.persistence.Entity
-import javax.persistence.Table
+import com.fasterxml.jackson.annotation.JsonIgnore
+import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
 @Entity
-@Table(name = "genres")
+@Table(name = "genres", uniqueConstraints = [UniqueConstraint(columnNames = ["name", "source_id"])])
 class Genre : AuditModel()
 {
     @NotBlank
-    var genre: String = ""
+    var name: String = ""
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "source_id", nullable = false, columnDefinition = "uuid")
+    @JsonIgnore
+    lateinit var source: Source
 }
